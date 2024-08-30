@@ -59,21 +59,23 @@ function App() {
   return (
     <>
       <div className="container vh-100 align-content-center">
-        <Heading />
-        <InputForm
-          onHandleSubmit={onHandleSubmit}
-          webURL={webURL}
-          username={username}
-          password={password}
-        />
-        <DisplayTabel
-          details={details}
-          onHandleDelete={onHandleDelete}
-          webURL={webURL}
-          username={username}
-          password={password}
-          // onHandleEdit={onHandleEdit}
-        />
+        <div className="backgound-container">
+          <Heading />
+          <InputForm
+            onHandleSubmit={onHandleSubmit}
+            webURL={webURL}
+            username={username}
+            password={password}
+          />
+          <DisplayTabel
+            details={details}
+            onHandleDelete={onHandleDelete}
+            webURL={webURL}
+            username={username}
+            password={password}
+            // onHandleEdit={onHandleEdit}
+          />
+        </div>
       </div>
     </>
   );

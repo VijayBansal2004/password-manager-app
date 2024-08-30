@@ -90,7 +90,7 @@ const PasswordRow = ({
             </span>
           </div>
         </td>
-        <td>
+        <td className="d-flex justify-content-end">
           {isEditable ? (
             <button
               type="button"

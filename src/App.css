@@ -1,5 +1,60 @@
+::-webkit-scrollbar {
+  height: 5px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  height: 5px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #565656;
+  height: 5px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body{
+  background-color: black !important;
+  color: white !important;
+}
+
+th,td,td input{
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.backgound-container{
+  background-color: #ffffff17;
+  border-radius: 20px;
+  padding: 65px 45px;
+  margin-block:20px;
+}
+.heading{
+  border-bottom: 1px solid #ffffff47;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-bottom: 1px solid #ffffff2e !important;
+}
+
+.table-container{
+  overflow-x: scroll !important;
+}
+table{
+  min-width:846px;
+}
+
+@media (max-width:450px) {
+  .backgound-container {
+    padding: 45px 15px;
+  }
 }
