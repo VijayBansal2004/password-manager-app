@@ -11,15 +11,17 @@ const PasswordRow = ({
   item,
   index,
   onHandleDelete,
-  // onHandleEdit,
+  handleEdit,
   webURL,
   username,
   password,
+  id,
 }) => {
   const [maskPassword, setMaskPassword] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
 
-  const handleEdit = () => {
+
+  const handleToggleEditButton = () => {
     setIsEditable(!isEditable);
   };
   const onCopyToClipboard = async (text) => {
@@ -40,7 +42,7 @@ const PasswordRow = ({
             <input
               type="url"
               style={{ border: "none", width: "90%" }}
-              readOnly={!isEditable}
+              // readOnly={!isEditable}
               value={item.webURL}
               className={`p-2 ${isEditable && "border border-1 rounded"}`}
             />
@@ -54,7 +56,7 @@ const PasswordRow = ({
             <input
               type="text"
               style={{ border: "none", width: "90%" }}
-              readOnly={!isEditable}
+              // readOnly={!isEditable}
               value={item.userName}
               className={`p-2 ${isEditable && "border border-1 rounded"}`}
             />
@@ -68,7 +70,7 @@ const PasswordRow = ({
             <input
               type={maskPassword ? "text" : "password"}
               style={{ border: "none", width: "70%" }}
-              readOnly={!isEditable}
+              // readOnly={!isEditable}
               value={item.password}
               className={`p-2 ${isEditable && "border border-1 rounded"}`}
             />
@@ -95,7 +97,7 @@ const PasswordRow = ({
             <button
               type="button"
               className="btn btn-success me-2"
-              onClick={handleEdit}
+              onClick={() => handleEdit(id, item.webURL, item.userName, item.password, isEditable, setIsEditable)}
             >
               <LiaSave />
             </button>
@@ -103,7 +105,7 @@ const PasswordRow = ({
             <button
               type="button"
               className="btn btn-light me-2"
-              onClick={handleEdit}
+              onClick={handleToggleEditButton}
             >
               <FaRegEdit />
             </button>
@@ -117,7 +119,7 @@ const PasswordRow = ({
             <RiDeleteBin6Line />
           </button>
         </td>
-      </tr>
+      </tr >
     </>
   );
 };

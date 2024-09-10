@@ -25,6 +25,7 @@ function App() {
       const userDetails = [
         ...details,
         {
+          id: Date.now(),
           webURL: URL.current.value,
           userName: name.current.value,
           password: pass.current.value,
@@ -43,6 +44,13 @@ function App() {
     });
     setDetails(newDetailList);
   };
+
+  const handleEdit = (id, url, name, pass, isEditable, setIsEditable) => {
+    setDetails(details.map((detail) => (
+      detail.id === id ? { ...detail, webURL: url, userName: name, password: pass } : detail
+    )));
+    setIsEditable(!isEditable);
+  }
 
   // const onHandleEdit = (URL, name, pass) => {
   //   console.log(URL, name, pass);
@@ -70,10 +78,11 @@ function App() {
           <DisplayTabel
             details={details}
             onHandleDelete={onHandleDelete}
+            handleEdit={handleEdit}
             webURL={webURL}
             username={username}
             password={password}
-            // onHandleEdit={onHandleEdit}
+          // onHandleEdit={onHandleEdit}
           />
         </div>
       </div>

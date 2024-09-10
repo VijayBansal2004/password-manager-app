@@ -3,7 +3,7 @@ import PasswordRow from "./PasswordRow";
 const DisplayTabel = ({
   details,
   onHandleDelete,
-  // onHandleEdit,
+  handleEdit,
   webURL,
   username,
   password,
@@ -29,10 +29,11 @@ const DisplayTabel = ({
                 item={item}
                 index={index}
                 onHandleDelete={onHandleDelete}
-                // onHandleEdit={onHandleEdit}
+                handleEdit={handleEdit}
                 webURL={webURL}
                 username={username}
                 password={password}
+                id={details.id}
               />
             );
           })}
