@@ -1,25 +1,23 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import { MdContentCopy } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 import { LiaSave } from "react-icons/lia";
-import EditModel from "./EditModel";
 
 const PasswordRow = ({
   item,
   index,
   onHandleDelete,
   handleEdit,
-  webURL,
-  username,
-  password,
-  id,
 }) => {
   const [maskPassword, setMaskPassword] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
 
+  const editedURL = useRef();
+  const editedName = useRef();
+  const editedPass = useRef();
 
   const handleToggleEditButton = () => {
     setIsEditable(!isEditable);
@@ -39,13 +37,16 @@ const PasswordRow = ({
         </td>
         <td>
           <div className="d-flex justify-content-between">
-            <input
-              type="url"
+            <textarea
+              name="text"
               style={{ border: "none", width: "90%" }}
-              // readOnly={!isEditable}
-              value={item.webURL}
-              className={`p-2 ${isEditable && "border border-1 rounded"}`}
-            />
+              className={`p-2 textarea-data ${isEditable && "border border-1 rounded"}`}
+              readOnly={!isEditable}
+              rows={1}
+              ref={editedURL}
+            >
+              {item.webURL}
+            </textarea>
             <span>
               <MdContentCopy onClick={() => onCopyToClipboard(item.webURL)} />
             </span>
@@ -53,13 +54,17 @@ const PasswordRow = ({
         </td>
         <td>
           <div className="d-flex justify-content-between">
-            <input
-              type="text"
+            <textarea
+              name="text"
               style={{ border: "none", width: "90%" }}
-              // readOnly={!isEditable}
-              value={item.userName}
-              className={`p-2 ${isEditable && "border border-1 rounded"}`}
-            />
+              className={`p-2 textarea-data ${isEditable && "border border-1 rounded"}`}
+              readOnly={!isEditable}
+              rows={1}
+              ref={editedName}
+            >
+              {item.userName}
+            </textarea>
+
             <span>
               <MdContentCopy onClick={() => onCopyToClipboard(item.userName)} />
             </span>
@@ -67,13 +72,28 @@ const PasswordRow = ({
         </td>
         <td>
           <div className="d-flex justify-content-between">
-            <input
+            {/* <input
               type={maskPassword ? "text" : "password"}
               style={{ border: "none", width: "70%" }}
               // readOnly={!isEditable}
               value={item.password}
               className={`p-2 ${isEditable && "border border-1 rounded"}`}
-            />
+            /> */}
+
+            <textarea
+              name="text"
+
+              type={maskPassword ? "text" : "password"}
+
+              style={{ border: "none", width: "70%" }}
+              className={`p-2 textarea-data ${isEditable && "border border-1 rounded"}`}
+              readOnly={!isEditable}
+              rows={1}
+              ref={editedPass}
+            >
+              {item.password}
+            </textarea>
+
             <span>
               <span>
                 <MdContentCopy
@@ -97,7 +117,7 @@ const PasswordRow = ({
             <button
               type="button"
               className="btn btn-success me-2"
-              onClick={() => handleEdit(id, item.webURL, item.userName, item.password, isEditable, setIsEditable)}
+              onClick={() => handleEdit(item.id, editedURL.current.value, editedName.current.value, editedPass.current.value, isEditable, setIsEditable)}
             >
               <LiaSave />
             </button>

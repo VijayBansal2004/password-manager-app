@@ -4,9 +4,6 @@ const DisplayTabel = ({
   details,
   onHandleDelete,
   handleEdit,
-  webURL,
-  username,
-  password,
 }) => {
   const defaultPara = `No records to show`;
   return (
@@ -30,10 +27,6 @@ const DisplayTabel = ({
                 index={index}
                 onHandleDelete={onHandleDelete}
                 handleEdit={handleEdit}
-                webURL={webURL}
-                username={username}
-                password={password}
-                id={details.id}
               />
             );
           })}

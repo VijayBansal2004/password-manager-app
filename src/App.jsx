@@ -9,11 +9,10 @@ function App() {
     const storedDetails = localStorage.getItem("details");
     return storedDetails ? JSON.parse(storedDetails) : [];
   });
+
   const webURL = useRef();
   const username = useRef();
   const password = useRef();
-
-  // const [inputData, setInputData] = useState();
 
   useEffect(() => {
     localStorage.setItem("details", JSON.stringify(details));
@@ -52,18 +51,6 @@ function App() {
     setIsEditable(!isEditable);
   }
 
-  // const onHandleEdit = (URL, name, pass) => {
-  //   console.log(URL, name, pass);
-  //   const newArr = [
-  //     {
-  //       webURL: URL,
-  //       userName: name,
-  //       password: pass,
-  //     },
-  //   ];
-  //   setInputData(newArr);
-  //   // console.log(inputData.webURL);
-  // };
   return (
     <>
       <div className="container vh-100 align-content-center">
@@ -79,10 +66,6 @@ function App() {
             details={details}
             onHandleDelete={onHandleDelete}
             handleEdit={handleEdit}
-            webURL={webURL}
-            username={username}
-            password={password}
-          // onHandleEdit={onHandleEdit}
           />
         </div>
       </div>

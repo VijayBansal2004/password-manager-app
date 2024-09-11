@@ -58,3 +58,8 @@ table{
     padding: 45px 15px;
   }
 }
+
+.textarea-data{
+  background-color: transparent;
+  color: white;
+}
