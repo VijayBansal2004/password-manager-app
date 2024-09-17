@@ -3,6 +3,7 @@ import Heading from "./components/Heading";
 import InputForm from "./components/InputForm";
 import DisplayTabel from "./components/DisplayTabel";
 import { useState, useEffect, useRef } from "react";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [details, setDetails] = useState(() => {
@@ -13,6 +14,9 @@ function App() {
   const webURL = useRef();
   const username = useRef();
   const password = useRef();
+
+  const [searchedURL, setSearchedURL] = useState([]);
+
 
   useEffect(() => {
     localStorage.setItem("details", JSON.stringify(details));
@@ -49,13 +53,34 @@ function App() {
       detail.id === id ? { ...detail, webURL: url, userName: name, password: pass } : detail
     )));
     setIsEditable(!isEditable);
+  };
+
+  const handleSearch = (searchedWord) => {
+    // console.log(searchedWord.length);
+    if (searchedWord.length <= 1) {
+      setSearchedURL([]);
+    }
+    else {
+      const arr = details.filter((detail) => (detail.webURL.toLowerCase().includes(searchedWord.toLowerCase())));
+      setSearchedURL([...arr]);
+    }
   }
+
+  const handleCancleSearch = () => {
+    setSearchedURL([]);
+  }
+
+  useEffect(() => {
+    console.log(searchedURL);
+  }, [searchedURL]);
+
 
   return (
     <>
       <div className="container vh-100 align-content-center">
         <div className="backgound-container">
           <Heading />
+          <SearchBar handleSearch={handleSearch} searchedURL={searchedURL} handleCancleSearch={handleCancleSearch} />
           <InputForm
             onHandleSubmit={onHandleSubmit}
             webURL={webURL}

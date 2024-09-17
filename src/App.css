@@ -63,3 +63,42 @@ table{
   background-color: transparent;
   color: white;
 }
+
+.searchBar-container{
+  position: relative;
+  max-width: 603px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.searchedResultContainer{
+  background-color: #303030;
+  border-radius: 5px;
+  position: absolute;
+  width: 100%;
+}
+
+.searchedResult{
+  width: 100%;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.searchedResult:hover{
+  background-color: #1717177d;
+}
+.searchedResult p{
+  margin: 0;
+  line-height: 35px;
+}
+.searchBar{
+  position: relative;
+}
+.searchBar-icon{
+  position: absolute;
+  right: 6px;
+  top: 8px;
+  font-size: 1.5rem;
+  filter: invert(1);
+  cursor: pointer;
+}
